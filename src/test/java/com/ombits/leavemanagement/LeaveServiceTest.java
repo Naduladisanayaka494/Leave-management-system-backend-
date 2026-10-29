@@ -45,7 +45,7 @@ class LeaveServiceTest {
 
     @BeforeEach
     void setUp() {
-        employee = new Employee("Jane Developer", "jane@ombits.com", "Engineering");
+        employee = new Employee("Kavindi Senaratne", "kavindi@ombits.com", "Engineering");
         employee.setId(1L);
     }
 

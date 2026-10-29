@@ -38,38 +38,45 @@ public class DataSeeder implements CommandLineRunner {
             User adminUser = new User("admin@ombits.com", passwordEncoder.encode("admin123"), Role.ROLE_ADMIN);
             adminUser = userRepository.save(adminUser);
 
-            Employee adminEmployee = new Employee("System Administrator", "admin@ombits.com", "Executive", adminUser);
+            Employee adminEmployee = new Employee("Nadula Dissanayake", "admin@ombits.com", "Executive", adminUser);
             employeeRepository.save(adminEmployee);
 
-            // 2. Seed Employee 1: John Doe
-            User emp1User = new User("john@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
+            // 2. Seed Employee 1: Kasun Perera
+            User emp1User = new User("kasun@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
             emp1User = userRepository.save(emp1User);
 
-            Employee emp1 = new Employee("John Doe", "john@ombits.com", "Engineering", emp1User);
+            Employee emp1 = new Employee("Kasun Perera", "kasun@ombits.com", "Engineering", emp1User);
             emp1 = employeeRepository.save(emp1);
 
-            // 3. Seed Employee 2: Sarah Smith
-            User emp2User = new User("sarah@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
+            // 3. Seed Employee 2: Dilani Jayawardena
+            User emp2User = new User("dilani@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
             emp2User = userRepository.save(emp2User);
 
-            Employee emp2 = new Employee("Sarah Smith", "sarah@ombits.com", "Human Resources", emp2User);
+            Employee emp2 = new Employee("Dilani Jayawardena", "dilani@ombits.com", "Human Resources", emp2User);
             emp2 = employeeRepository.save(emp2);
 
-            // 4. Seed Employee 3: Alex Wong
-            User emp3User = new User("alex@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
+            // 4. Seed Employee 3: Nuwan Fernando
+            User emp3User = new User("nuwan@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
             emp3User = userRepository.save(emp3User);
 
-            Employee emp3 = new Employee("Alex Wong", "alex@ombits.com", "Product Design", emp3User);
+            Employee emp3 = new Employee("Nuwan Fernando", "nuwan@ombits.com", "Product Design", emp3User);
             emp3 = employeeRepository.save(emp3);
 
-            // 5. Seed Initial Leave Requests
+            // 5. Seed Employee 4: Chamari Bandara
+            User emp4User = new User("chamari@ombits.com", passwordEncoder.encode("employee123"), Role.ROLE_EMPLOYEE);
+            emp4User = userRepository.save(emp4User);
+
+            Employee emp4 = new Employee("Chamari Bandara", "chamari@ombits.com", "Quality Assurance", emp4User);
+            employeeRepository.save(emp4);
+
+            // 6. Seed Initial Leave Requests
             LocalDate today = LocalDate.now();
             LeaveRequest pendingLeave = new LeaveRequest(
                     emp1,
                     LeaveType.CASUAL,
                     today.plusDays(3),
                     today.plusDays(5),
-                    "Family event and personal commitments."
+                    "Family event and personal commitments in Kandy."
             );
             leaveRequestRepository.save(pendingLeave);
 
@@ -89,14 +96,14 @@ public class DataSeeder implements CommandLineRunner {
                     LeaveType.ANNUAL,
                     today.plusDays(10),
                     today.plusDays(15),
-                    "Annual vacation trip."
+                    "Annual vacation trip to Nuwara Eliya."
             );
             rejectedLeave.setStatus(LeaveStatus.REJECTED);
             rejectedLeave.setRejectionReason("Requested dates overlap with mandatory Q4 sprint delivery milestone.");
             rejectedLeave.setReviewedAt(LocalDateTime.now().minusDays(1));
             leaveRequestRepository.save(rejectedLeave);
 
-            System.out.println(">>> Demo data successfully seeded: Admin (admin@ombits.com) & Employees (john@ombits.com, sarah@ombits.com, alex@ombits.com)");
+            System.out.println(">>> Demo data successfully seeded: Admin (admin@ombits.com - Nadula Dissanayake) & Employees (Kasun Perera, Dilani Jayawardena, Nuwan Fernando, Chamari Bandara)");
         }
     }
 }

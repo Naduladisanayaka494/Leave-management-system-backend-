@@ -35,12 +35,13 @@ The server will start on **`http://localhost:8080`**.
 ---
 
 ## 🔑 Pre-seeded Evaluator Accounts
-| Role | Email | Password |
-|---|---|---|
-| **Administrator** | `admin@ombits.com` | `admin123` |
-| **Employee** | `john@ombits.com` | `employee123` |
-| **Employee** | `sarah@ombits.com` | `employee123` |
-| **Employee** | `alex@ombits.com` | `employee123` |
+| Role & Name | Email | Password | Department |
+|---|---|---|---|
+| **Administrator** (Nadula Dissanayake) | `admin@ombits.com` | `admin123` | Executive |
+| **Employee** (Kasun Perera) | `kasun@ombits.com` | `employee123` | Engineering |
+| **Employee** (Dilani Jayawardena) | `dilani@ombits.com` | `employee123` | Human Resources |
+| **Employee** (Nuwan Fernando) | `nuwan@ombits.com` | `employee123` | Product Design |
+| **Employee** (Chamari Bandara) | `chamari@ombits.com` | `employee123` | Quality Assurance |
 
 ---
 

@@ -57,8 +57,8 @@ class EmployeeControllerTest {
 
     @Test
     void testCreateEmployee_Success() throws Exception {
-        CreateEmployeeRequest request = new CreateEmployeeRequest("Alice Wonderland", "alice@ombits.com", "QA");
-        EmployeeDto dto = new EmployeeDto(1L, "Alice Wonderland", "alice@ombits.com", "QA", LocalDateTime.now());
+        CreateEmployeeRequest request = new CreateEmployeeRequest("Thisara Perera", "thisara@ombits.com", "QA");
+        EmployeeDto dto = new EmployeeDto(1L, "Thisara Perera", "thisara@ombits.com", "QA", LocalDateTime.now());
 
         when(employeeService.createEmployee(any(CreateEmployeeRequest.class))).thenReturn(dto);
 
@@ -67,14 +67,14 @@ class EmployeeControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(1L))
-                .andExpect(jsonPath("$.name").value("Alice Wonderland"))
-                .andExpect(jsonPath("$.email").value("alice@ombits.com"))
+                .andExpect(jsonPath("$.name").value("Thisara Perera"))
+                .andExpect(jsonPath("$.email").value("thisara@ombits.com"))
                 .andExpect(jsonPath("$.department").value("QA"));
     }
 
     @Test
     void testCreateEmployee_InvalidEmail_ReturnsBadRequest() throws Exception {
-        CreateEmployeeRequest invalidRequest = new CreateEmployeeRequest("Alice Wonderland", "invalid-email-address", "QA");
+        CreateEmployeeRequest invalidRequest = new CreateEmployeeRequest("Thisara Perera", "invalid-email-address", "QA");
 
         mockMvc.perform(post("/api/employees")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -85,7 +85,7 @@ class EmployeeControllerTest {
 
     @Test
     void testCreateEmployee_BlankName_ReturnsBadRequest() throws Exception {
-        CreateEmployeeRequest invalidRequest = new CreateEmployeeRequest("", "alice@ombits.com", "QA");
+        CreateEmployeeRequest invalidRequest = new CreateEmployeeRequest("", "thisara@ombits.com", "QA");
 
         mockMvc.perform(post("/api/employees")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -97,8 +97,8 @@ class EmployeeControllerTest {
     @Test
     void testGetAllEmployees_Success() throws Exception {
         List<EmployeeDto> list = List.of(
-                new EmployeeDto(1L, "Alice", "alice@ombits.com", "QA", LocalDateTime.now()),
-                new EmployeeDto(2L, "Bob", "bob@ombits.com", "Dev", LocalDateTime.now())
+                new EmployeeDto(1L, "Thisara", "thisara@ombits.com", "QA", LocalDateTime.now()),
+                new EmployeeDto(2L, "Ruwan", "ruwan@ombits.com", "Dev", LocalDateTime.now())
         );
 
         when(employeeService.getAllEmployees()).thenReturn(list);
@@ -106,7 +106,7 @@ class EmployeeControllerTest {
         mockMvc.perform(get("/api/employees"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].name").value("Alice"))
-                .andExpect(jsonPath("$[1].name").value("Bob"));
+                .andExpect(jsonPath("$[0].name").value("Thisara"))
+                .andExpect(jsonPath("$[1].name").value("Ruwan"));
     }
 }
